@@ -6,10 +6,12 @@
     "packages": {
         "event-sourcing": {
             "path": "packages/event-sourcing",
+            "prerelease": true,
             "release-type": "php"
         },
         "event-store": {
             "path": "packages/event-store",
+            "prerelease": true,
             "release-type": "php"
         }
     }
