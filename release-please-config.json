@@ -1,0 +1,16 @@
+{
+    "release-type": "php",
+    "prerelease": true,
+    "always-update": true,
+    "include-component-in-tag": true,
+    "packages": {
+        "event-sourcing": {
+            "path": "packages/event-sourcing",
+            "release-type": "php"
+        },
+        "event-store": {
+            "path": "packages/event-store",
+            "release-type": "php"
+        }
+    }
+}
