@@ -1,0 +1,67 @@
+#!/usr/bin/env php
+<?php
+
+require __DIR__ . '/../vendor/autoload.php';
+
+$rootComposer = json_decode(file_get_contents(__DIR__ . '/../composer.json'), true);
+$packages = json_decode(file_get_contents(__DIR__ . '/../release-please-config.json'), true)['packages'];
+
+// Reset our root.
+$rootComposer['autoload'] = [];
+$rootComposer['autoload-dev'] = [];
+
+foreach ($packages as $package) {
+    $packagePath = $package['path'];
+    $packageComposerPath = "$packagePath/composer.json";
+
+    if (! file_exists($packageComposerPath)) {
+        continue;
+    }
+
+    $packageComposer = json_decode(file_get_contents($packageComposerPath), true);
+
+    foreach (['autoload', 'autoload-dev'] as $autoloadType) {
+        if (! isset($packageComposer[$autoloadType])) {
+            continue;
+        }
+
+        foreach ($packageComposer[$autoloadType] as $type => $mappings) {
+            foreach ($mappings as $namespace => $relativePaths) {
+                $relativePaths = (array) $relativePaths;
+
+                foreach ($relativePaths as $path) {
+                    $updatedPath = rtrim("$packagePath/$path", '/');
+
+                    // Initialize root composer sections as needed
+                    $rootComposer[$autoloadType] ??= [];
+                    $rootComposer[$autoloadType][$type] ??= [];
+
+                    // Normalize namespace entry to array if needed
+                    $existing = $rootComposer[$autoloadType][$type][$namespace] ?? [];
+                    $existing = (array) $existing;
+
+                    if (!in_array($updatedPath, $existing)) {
+                        $existing[] = $updatedPath;
+                    }
+
+                    $rootComposer[$autoloadType][$type][$namespace] = count($existing) === 1
+                        ? $existing[0]
+                        : array_values(array_unique($existing));
+                }
+            }
+        }
+    }
+}
+
+// Sort the autoloads.
+foreach (['autoload', 'autoload-dev'] as $autoloadType) {
+    if (! isset($rootComposer[$autoloadType])) {
+        continue;
+    }
+
+    foreach ($rootComposer[$autoloadType] as $type => &$mappings) {
+        ksort($mappings);
+    }
+}
+
+file_put_contents(__DIR__ . '/../composer.json', json_encode($rootComposer, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));

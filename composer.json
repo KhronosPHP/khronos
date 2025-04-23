@@ -23,8 +23,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Khronos\\EventSourcing\\": "packages/event-sourcing/src/",
-            "Khronos\\EventStore\\": "packages/event-store/src/"
+            "Khronos\\EventSourcing\\": "packages/event-sourcing/src",
+            "Khronos\\EventStore\\": "packages/event-store/src"
         }
     },
     "autoload-dev": {
