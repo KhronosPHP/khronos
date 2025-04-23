@@ -2,3 +2,7 @@
 build/
 vendor/
 composer.lock
+
+# Package Sub-directories
+packages/*/vendor/
+packages/*/composer.lock

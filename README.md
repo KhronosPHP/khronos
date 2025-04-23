@@ -61,11 +61,9 @@ foreach ($eventStore->readStream('test-123') as $storedEvent) {
 ```
 
 ## Event Sourcing
+
 ```php
-use Khronos\EventSourcing\AggregateRoot;
-use Khronos\EventSourcing\DefaultAggregateRepository;use Khronos\EventSourcing\RecordsEvents;
-use Ramsey\Uuid\Uuid;
-use Ramsey\Uuid\UuidInterface;
+use Khronos\EventSourcing\DefaultAggregateRepository;use Khronos\EventSourcing\RecordsEvents;use Ramsey\Uuid\Uuid;use Ramsey\Uuid\UuidInterface;
 
 // Typically this would be resolved from the container.
 // Framework integrations set this up with our default

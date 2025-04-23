@@ -1,0 +1,23 @@
+{
+    "name": "khronos/event-store",
+    "description": "Event store library for event sourcing.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Khronos\\EventStore\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Khronos\\EventStore\\Tests\\Unit\\": "tests/Unit"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "ramsey/uuid": "^4.7"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1.3"
+    },
+    "license": "MIT"
+}
