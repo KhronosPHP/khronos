@@ -4,5 +4,6 @@ vendor/
 composer.lock
 
 # Package Sub-directories
+packages/*/build/
 packages/*/vendor/
 packages/*/composer.lock
