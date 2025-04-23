@@ -7,11 +7,13 @@
         "event-sourcing": {
             "path": "packages/event-sourcing",
             "prerelease": true,
+            "initial-version": "0.1.0",
             "release-type": "php"
         },
         "event-store": {
             "path": "packages/event-store",
             "prerelease": true,
+            "initial-version": "0.1.0",
             "release-type": "php"
         }
     }
