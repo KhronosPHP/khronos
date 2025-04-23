@@ -21,6 +21,18 @@
             }
         }
     ],
+    "autoload": {
+        "psr-4": {
+            "Khronos\\EventSourcing\\": "packages/event-sourcing",
+            "Khronos\\EventStore\\": "packages/event-store"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Khronos\\EventSourcing\\Tests\\Unit\\": "packages/event-sourcing/tests/Unit",
+            "Khronos\\EventStore\\Tests\\Unit\\": "packages/event-store/tests/Unit"
+        }
+    },
     "require": {
         "khronos/event-sourcing": "*",
         "khronos/event-store": "*"
@@ -30,5 +42,8 @@
     },
     "config": {
         "sort-packages": true
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit"
     }
 }
