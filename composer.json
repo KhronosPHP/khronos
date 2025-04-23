@@ -44,6 +44,10 @@
         "sort-packages": true
     },
     "scripts": {
+        "qa": [
+            "@merge"
+        ],
+        "merge": "bin/merge-composer",
         "test": "vendor/bin/phpunit"
     }
 }
