@@ -6,8 +6,9 @@
 - Testing utilities.
 
 ## Event Store
+
 ```php
-$discovery = new ClassDiscovery(
+use Khronos\EventStore\ExpectedVersion;$discovery = new ClassDiscovery(
     new ComposerClassMapClassLocator(__DIR__ . '/vendor/composer/autoload_classmap.php')
 );
 
@@ -48,8 +49,8 @@ $eventStore = new DefaultEventStore(
     driver: new InMemoryEventStoreDriver()
 );
 
-$eventStore->appendToStream('test-123', new BookWasCheckedOut('123'));
-$eventStore->appendToStream('test-123', new BookWasReturned());
+$eventStore->appendToStream('test-123', ExpectedVersion::any(), new BookWasCheckedOut('123'));
+$eventStore->appendToStream('test-123', ExpectedVersion::any(), new BookWasReturned());
 
 foreach ($eventStore->readStream('test-123') as $storedEvent) {
     var_dump($storedEvent->event);
