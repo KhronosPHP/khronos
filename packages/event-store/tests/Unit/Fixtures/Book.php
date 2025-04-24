@@ -33,14 +33,14 @@ final class Book implements AggregateRoot
         }
 
         return $this->recordThat(
-            new BookWasCheckedOut($this->id)
+            new BookWasCheckedOut($this->id),
         );
     }
 
     public function return(): self
     {
         return $this->recordThat(
-            new BookWasReturned($this->id)
+            new BookWasReturned($this->id),
         );
     }
 

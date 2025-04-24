@@ -19,7 +19,7 @@ final class ParameterTypeEventApplier implements EventApplier
                 continue;
             }
 
-            $types = $firstParameter instanceof ReflectionUnionType
+            $types = ($firstParameter instanceof ReflectionUnionType)
                 ? $firstParameter->getTypes()
                 : [$firstParameter->getType()];
 

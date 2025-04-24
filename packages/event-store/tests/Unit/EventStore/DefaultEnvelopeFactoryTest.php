@@ -10,16 +10,16 @@ use PHPUnit\Framework\TestCase;
 
 final class DefaultEnvelopeFactoryTest extends TestCase
 {
-    public function test_it_creates_envelope()
+    public function test_it_creates_envelope(): void
     {
         $factory = new DefaultEnvelopeFactory(
             eventRegistry: new StaticMapRegistry([
                 BookWasCheckedOut::class => 'book.checked-out',
-            ])
+            ]),
         );
 
         $envelope = $factory->wrap(
-            new BookWasCheckedOut('123', new \DateTimeImmutable())
+            new BookWasCheckedOut('123', new \DateTimeImmutable()),
         );
 
         $this->assertInstanceOf(Envelope::class, $envelope);

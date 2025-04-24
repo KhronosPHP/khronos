@@ -14,8 +14,9 @@ final class Metadata
         get => $this->metadata['event_type'] ?? throw new RuntimeException('Event type is not set');
     }
 
-    public function __construct(private(set) array $metadata = [])
-    {}
+    public function __construct(
+        private(set) array $metadata = [],
+    ) {}
 
     public function withRequired(string $eventId, string $eventType): Metadata
     {

@@ -5,11 +5,11 @@ namespace Khronos\EventStore;
 use Khronos\EventStore\Envelope\Envelope;
 use Khronos\EventStore\Envelope\EnvelopeFactory;
 
-final class DefaultEventStore implements EventStore
+final readonly class DefaultEventStore implements EventStore
 {
     public function __construct(
-        private readonly EnvelopeFactory $envelopeFactory,
-        private readonly EventStoreDriver $driver,
+        private EnvelopeFactory $envelopeFactory,
+        private EventStoreDriver $driver,
     ) {}
 
     public function appendToStream(string $stream, ExpectedVersion $expectedVersion, object ...$events): void

@@ -22,7 +22,7 @@ final class ExpectedVersion
     }
 
     public function __construct(
-        private(set) ?int $value
+        private(set) ?int $value,
     ) {
         if ($value < -1) {
             throw new UnexpectedValueException('Expected version must be greater than or equal to -1, got ' . $value);

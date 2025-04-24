@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class InMemoryEventStoreTest extends TestCase
 {
-    public function test_writing_events()
+    public function test_writing_events(): void
     {
         $eventsBefore = [
             new Envelope(
@@ -21,15 +21,15 @@ final class InMemoryEventStoreTest extends TestCase
                 new Metadata([
                     'event_id' => '123',
                     'event_type' => 'book.checked-out',
-                ])
+                ]),
             ),
             new Envelope(
                 new BookWasReturned('123'),
                 new Metadata([
                     'event_id' => '124',
                     'event_type' => 'book.returned',
-                ])
-            )
+                ]),
+            ),
         ];
 
         $eventsAfter = [
@@ -40,7 +40,7 @@ final class InMemoryEventStoreTest extends TestCase
                 new Metadata([
                     'event_id' => '125',
                     'event_type' => 'book.checked-out',
-                ])
+                ]),
             ),
         ];
 
@@ -49,13 +49,15 @@ final class InMemoryEventStoreTest extends TestCase
         $store->appendToStream('test-stream', ExpectedVersion::any(), ...$eventsBefore);
 
         $this->assertEquals(
-            $store->readStream('test-stream'), $eventsBefore
+            $store->readStream('test-stream'),
+            $eventsBefore,
         );
 
         $store->appendToStream('test-stream', ExpectedVersion::any(), $eventsAfter[2]);
 
         $this->assertEquals(
-            $store->readStream('test-stream'), $eventsAfter
+            $store->readStream('test-stream'),
+            $eventsAfter,
         );
     }
 }

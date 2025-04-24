@@ -6,10 +6,10 @@ use Khronos\EventSourcing\AggregateRoot as TAggregate;
 use Khronos\EventStore\EventStore;
 use Khronos\EventStore\ExpectedVersion;
 
-final class DefaultAggregateRepository implements AggregateRepository
+final readonly class DefaultAggregateRepository implements AggregateRepository
 {
     public function __construct(
-        private readonly EventStore $eventStore
+        private EventStore $eventStore,
     ) {}
 
     /**
@@ -18,7 +18,7 @@ final class DefaultAggregateRepository implements AggregateRepository
      * @param class-string<TAggregate> $aggregateRootType
      * @return TAggregate
      */
-    public function findById(string $aggregateRootId, string $aggregateRootType)
+    public function findById(string $aggregateRootId, string $aggregateRootType): object
     {
         $events = $this->eventStore->readStream('test-stream');
 
@@ -30,7 +30,7 @@ final class DefaultAggregateRepository implements AggregateRepository
         $events = $aggregateRoot->_recordedEvents;
         $version = $aggregateRoot->_version;
 
-        if (empty($events)) {
+        if (count($events) === 0) {
             return;
         }
 

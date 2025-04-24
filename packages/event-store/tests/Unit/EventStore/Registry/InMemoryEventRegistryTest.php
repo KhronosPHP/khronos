@@ -19,13 +19,13 @@ final class InMemoryEventRegistryTest extends TestCase
         ]);
     }
 
-    public function test_getting_event_name_from_type()
+    public function test_getting_event_name_from_type(): void
     {
         $this->assertSame('book.checked-out', $this->eventRegistry->eventTypeFor(BookWasCheckedOut::class));
         $this->assertSame('book.returned', $this->eventRegistry->eventTypeFor(BookWasReturned::class));
     }
 
-    public function test_getting_event_type_from_name()
+    public function test_getting_event_type_from_name(): void
     {
         $this->assertSame(BookWasCheckedOut::class, $this->eventRegistry->classFor('book.checked-out'));
         $this->assertSame(BookWasReturned::class, $this->eventRegistry->classFor('book.returned'));
