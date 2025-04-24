@@ -3,6 +3,7 @@
     "prerelease": true,
     "always-update": true,
     "include-component-in-tag": true,
+    "bootstrap-sha": "49277dca9e0969166c5631405a58b469e6ba660c",
     "packages": {
         "event-sourcing": {
             "path": "packages/event-sourcing",
