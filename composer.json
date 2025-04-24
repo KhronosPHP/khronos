@@ -23,8 +23,8 @@
     ],
     "autoload": {
         "psr-4": {
-            "Khronos\\EventSourcing\\": "packages/event-sourcing/src/",
-            "Khronos\\EventStore\\": "packages/event-store/src/"
+            "Khronos\\EventSourcing\\": "packages/event-sourcing/src",
+            "Khronos\\EventStore\\": "packages/event-store/src"
         }
     },
     "autoload-dev": {
@@ -44,6 +44,10 @@
         "sort-packages": true
     },
     "scripts": {
+        "qa": [
+            "@merge"
+        ],
+        "merge": "bin/merge-composer",
         "test": "vendor/bin/phpunit"
     }
 }
