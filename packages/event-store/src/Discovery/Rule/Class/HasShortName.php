@@ -6,8 +6,9 @@ use ReflectionClass;
 
 final class HasShortName implements ClassRule
 {
-    public function __construct(private string $shortName)
-    {}
+    public function __construct(
+        private string $shortName,
+    ) {}
 
     public function matches(ReflectionClass $reflectionClass): bool
     {

@@ -11,8 +11,9 @@ final class ClassDiscovery
 {
     private array $rules = [];
 
-    public function __construct(private ClassLocator $classLocator)
-    {}
+    public function __construct(
+        private ClassLocator $classLocator,
+    ) {}
 
     public function withRule(ClassRule $rule): self
     {

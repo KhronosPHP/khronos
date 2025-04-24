@@ -11,7 +11,7 @@ interface AggregateRepository
      *
      * @return AggregateType
      */
-    public function findById(string $aggregateRootId, string $aggregateRootType);
+    public function findById(string $aggregateRootId, string $aggregateRootType): object;
 
     public function save(AggregateRoot $aggregateRoot): void;
 }

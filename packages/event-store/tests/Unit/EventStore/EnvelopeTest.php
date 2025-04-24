@@ -11,24 +11,24 @@ use RuntimeException;
 
 class EnvelopeTest extends TestCase
 {
-    public function test_getting_event_name()
+    public function test_getting_event_name(): void
     {
         $envelope = new Envelope(
             new BookWasCheckedOut('test', new DateTimeImmutable()),
             new Metadata([
                 'event_type' => 'book.checked-out',
-            ])
+            ]),
         );
 
         $this->assertSame('book.checked-out', $envelope->metadata->eventType);
     }
 
-    public function test_getting_event_name_throws_exception_if_not_set()
+    public function test_getting_event_name_throws_exception_if_not_set(): void
     {
         $this->expectException(RuntimeException::class);
 
         $envelope = new Envelope(
-            new BookWasCheckedOut('test', new DateTimeImmutable())
+            new BookWasCheckedOut('test', new DateTimeImmutable()),
         );
 
         $envelope->metadata->eventType;

@@ -9,7 +9,7 @@ use PHPUnit\Framework\TestCase;
 
 final class ParameterTypeEventApplierTest extends TestCase
 {
-    public function test_event_is_applied()
+    public function test_event_is_applied(): void
     {
         $aggregate = new Book();
         $applier = new ParameterTypeEventApplier();

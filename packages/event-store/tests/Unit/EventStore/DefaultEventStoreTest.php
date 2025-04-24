@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 final class DefaultEventStoreTest extends TestCase
 {
-    public function test_writing_events()
+    public function test_writing_events(): void
     {
         $driver = new InMemoryEventStoreDriver();
         $store = new DefaultEventStore(
@@ -21,7 +21,7 @@ final class DefaultEventStoreTest extends TestCase
                 BookWasCheckedOut::class => 'book.checked-out',
                 BookWasReturned::class => 'book.returned',
             ])),
-            $driver
+            $driver,
         );
 
         $event1 = new BookWasCheckedOut('123', new \DateTimeImmutable());

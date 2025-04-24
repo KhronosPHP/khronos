@@ -4,10 +4,10 @@ namespace Khronos\EventStore\Discovery\Locator;
 
 use Traversable;
 
-final class ComposerClassMapClassLocator implements ClassLocator
+final readonly class ComposerClassMapClassLocator implements ClassLocator
 {
     public function __construct(
-        private readonly string $autoloadClassmapPath,
+        private string $autoloadClassmapPath,
     ) {}
 
     public function getIterator(): Traversable

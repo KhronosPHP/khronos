@@ -35,7 +35,7 @@ final class InMemoryEventStoreDriver implements EventStoreDriver
             throw new RuntimeException('Stream does not exist');
         }
 
-        if ($expectedVersion->value > -1 && count($this->eventStreams[$stream]) - 1 !== $expectedVersion->value) {
+        if ($expectedVersion->value > -1 && (count($this->eventStreams[$stream]) - 1) !== $expectedVersion->value) {
             throw new RuntimeException('Stream version does not match');
         }
     }

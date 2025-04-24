@@ -19,7 +19,7 @@ final readonly class DefaultEnvelopeFactory implements EnvelopeFactory
     {
         $metadata = $metadata->withRequired(
             eventId: Uuid::uuid7(),
-            eventType: $this->eventRegistry->eventTypeFor($event::class)
+            eventType: $this->eventRegistry->eventTypeFor($event::class),
         );
 
         $metadata = $this->metadataEnricher->enrich($event, $metadata);
