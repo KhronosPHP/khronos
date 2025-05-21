@@ -15,7 +15,7 @@ class AttributeStreamNameResolverTest extends TestCase
 
         $this->assertSame(
             'book',
-            $resolver->resolve(new Book())
+            $resolver->resolve(new Book()),
         );
     }
 }

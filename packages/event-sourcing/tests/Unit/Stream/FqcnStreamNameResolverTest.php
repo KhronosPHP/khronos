@@ -14,7 +14,7 @@ class FqcnStreamNameResolverTest extends TestCase
 
         $this->assertSame(
             Book::class,
-            $resolver->resolve(new Book())
+            $resolver->resolve(new Book()),
         );
     }
 }

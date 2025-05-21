@@ -12,7 +12,7 @@ final class AttributeStreamNameResolver implements StreamNameResolver
 
         // TODO(aidan-casey): Clean this up.
         $attribute = $reflection->getAttributes(Stream::class)[0] ?? throw new UnexpectedValueException(
-            'No stream attribute found on aggregate'
+            'No stream attribute found on aggregate',
         );
 
         return $attribute->newInstance()->name;
