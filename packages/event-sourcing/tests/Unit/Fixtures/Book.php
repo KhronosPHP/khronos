@@ -4,7 +4,9 @@ namespace Khronos\EventSourcing\Tests\Unit\Fixtures;
 
 use Khronos\EventSourcing\AggregateRoot;
 use Khronos\EventSourcing\RecordsEvents;
+use Khronos\EventSourcing\Stream\Stream;
 
+#[Stream('book')]
 final class Book implements AggregateRoot
 {
     use RecordsEvents;
