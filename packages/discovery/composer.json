@@ -1,0 +1,23 @@
+{
+    "name": "khronos/discovery",
+    "description": "Discovery engine for Khronos.",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "Khronos\\Discovery\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Khronos\\Discovery\\Tests\\Unit\\": "tests/Unit"
+        }
+    },
+    "require": {
+        "php": "^8.4",
+        "psr/container": "^2.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^12.1"
+    },
+    "license": "MIT"
+}
